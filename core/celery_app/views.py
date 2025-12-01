@@ -3,6 +3,7 @@ from django.shortcuts import render
 import logging
 
 from .models import Task
+from .tasks import delayed_task
 
 
 logging.basicConfig(level=logging.INFO)
@@ -22,12 +23,11 @@ def index(request):
         errors = []
 
         try:
-            task = Task.objects.create(title=title, delay=delay)
-            task.save()
+            delayed_task.delay(title, delay)
         except Exception as e:
             logger.error(f"Error creating task: {e}")
             errors.append(str(e))
-            return render(request, "create-tasks.html", context=context)
+            return render(request, "create-tasks.html", context={"errors": errors})
         
         messages = Task.objects.all()
         
