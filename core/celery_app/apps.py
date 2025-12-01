@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class CeleryConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "celery"
+    name = "celery_app"

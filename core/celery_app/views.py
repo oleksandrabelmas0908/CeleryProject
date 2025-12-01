@@ -31,7 +31,6 @@ def index(request):
         
         messages = Task.objects.all()
         
-
         context = {
             "messages": messages,
             "errors": errors,

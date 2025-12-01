@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from celery.urls import urlpatterns as celery_urls
+from celery_app.urls import urlpatterns as celery_urls
 
 
 urlpatterns = [
